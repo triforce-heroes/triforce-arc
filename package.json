@@ -1,0 +1,48 @@
+{
+  "name": "@triforce-heroes/triforce-arc",
+  "version": "1.0.0",
+  "description": "Extract and rebuild Nintendo U8 ARC archives.",
+  "license": "Apache License 2.0",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*",
+    "#tests/*": "./tests/*"
+  },
+  "exports": {
+    "./Extract": {
+      "types": "./dist/Extract.d.mts",
+      "default": "./dist/Extract.mjs"
+    },
+    "./Rebuild": {
+      "types": "./dist/Rebuild.d.mts",
+      "default": "./dist/Rebuild.mjs"
+    }
+  },
+  "scripts": {
+    "build": "bun run lint && bun run test && tsdown",
+    "lint": "bun run typecheck && bun run oxlint && bun run oxfmt",
+    "lint:fix": "bun run typecheck && bun run oxlint:fix && bun run oxfmt:fix",
+    "oxfmt": "oxfmt --check ./src ./tests",
+    "oxfmt:fix": "oxfmt --write ./src ./tests",
+    "oxlint": "oxlint ./src ./tests",
+    "oxlint:fix": "oxlint --fix ./src ./tests",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@triforce-heroes/triforce-core": "github:triforce-heroes/triforce-core"
+  },
+  "devDependencies": {
+    "@rheactor/rheactor-oxc-config": "github:rheactor/rheactor-oxc-config",
+    "@types/node": "^26.6.5",
+    "oxfmt": "^0.73.0",
+    "oxlint": "^1.88.0",
+    "tsdown": "^0.23.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

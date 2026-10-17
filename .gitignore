@@ -1,0 +1,4 @@
+node_modules/
+workspace/
+tests/fixtures/**/*.arc
+*.tsbuildinfo
